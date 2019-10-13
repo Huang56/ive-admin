@@ -1,0 +1,165 @@
+// 登录也
+
+.admin_login_wrapper{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: radial-gradient(
+        circle at 100% 120%,
+        #423ca9,
+        transparent 30%
+    ),
+    radial-gradient(circle at 100% 10%, #333333, transparent 20%),
+    radial-gradient(circle at -20% 150%, #b200fc, transparent 20%),
+    radial-gradient(circle at 30% -50%, #f9e802, transparent 20%),
+    radial-gradient(circle at -10% 20%, #793fb3, transparent 20%),
+    radial-gradient(circle at 150% 69%, #3a7ba8, transparent 20%),
+    linear-gradient(180deg, #965b5b, #1c5b68);
+    .admin_logo{
+        background: url('../img/icon/logo/logo.svg') 10px 10px no-repeat
+     }
+    &.theme-fuying{
+        background-image: url('../img/icon/logo/bg_left.png'),
+            url('../img/icon/logo/bg_right.png'),
+            linear-gradient(135deg, #827dfd 15%, #2d71ef 100%),
+            linear-gradient(-180deg, rgba(12,58,103,0.00) 47%, rgba(0,47,94,0.27) 100%),
+            linear-gradient(-180deg, rgba(12,58,103,0.00) 47%, rgba(0,47,94,0.27) 100%);
+        background-size: 440px 520px, 740px 520px, 100% 100%, 100% 100%;
+        background-position: left bottom, right bottom, 0 0, 0 0;
+        .admin_logo{
+            background: url('../img/icon/logo/logo-fuying.svg') 0 10px no-repeat
+         }
+    }
+
+}
+
+// home  -> logo
+.logoImg{
+    width: 214px;
+    transition: .3s;
+    background: url('../img/icon/logo/logo.svg') center no-repeat;
+    &.collapsed{
+        width: 64px;
+        background: url('../img/icon/logo/logo_min.svg') center no-repeat;
+    }
+
+    &.theme-fuying {
+        background: url('../img/icon/logo/logo-fuying-wms.svg') center no-repeat;
+        &.collapsed{
+            width: 64px;
+            background: url('../img/icon/logo/logo-fuying_min.svg') center no-repeat;
+        }
+    }
+}
+
+
+
+
+//横向进度条
+.hScrollBar{
+    background: #15697F;
+    &.theme-fuying {
+        background: linear-gradient(-90deg, #0C3A67 0%, #362B6F 100%);
+    }
+}
+// HEADER -background
+.Header {
+    background: url('../img/bg/headerBox_bg@2x.png') no-repeat;
+    &.theme-fuying{
+        background: linear-gradient(-90deg, #0C3A67 0%, #362B6F 100%);
+    }
+}
+.homeBox {
+    background: url('../img/bg/SiderBox_bg@2X.png') no-repeat;
+    ::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        width: 2px;
+        background-color: #15697F;
+    }
+    .narrowMenu:hover, .narrowMenu_active{
+        background: #0ec1af;
+    }
+    .narrowMenu_side{
+        background-color: #3c7c88;
+        .side_title_hover:hover, .secondNav_active {
+            background: #0ec1af;
+        }
+        .narrowMenu_side_active {
+            // background-color: #0ec1af;
+            // height: 64px;
+            // overflow: hidden;
+            border-left: 4px solid #00e2cc;
+            background-color: rgba(255, 255, 255, 0.16);
+        }
+        .side_collaps_ul{
+            background-color: #226b78;
+            &>li:hover{
+                .narrowMenu_side_active
+            }
+        }
+    }
+    .ivu-menu-opened{
+        &>.ivu-menu-submenu-title {
+            background: #0EC1AF;
+        }
+        .ivu-menu{
+            background: #0ec1af33;
+        }
+        .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-item:hover{
+            background: #3C7C88;
+            color: #fff;
+        }
+        .ivu-menu-item-active:not(.ivu-menu-submenu):after{
+            width: 4px;
+            left: 0;
+            background: #00E2CC;
+        }
+    }
+    &.theme-fuying{
+        background: linear-gradient(-179deg, #0C3A67 0%, #1F1940 100%);
+        ::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+            width: 2px;
+            background: linear-gradient(-90deg, #0C3A67 0%, #362B6F 100%);;
+        }
+        .narrowMenu:hover, .narrowMenu_active {
+            background: #00a3f0;
+        }
+        .narrowMenu:hover, .narrowMenu_active{
+            background: #00a3f0;
+        }
+        .narrowMenu_side{
+            background-color: #152b57;
+            .side_title_hover:hover, .secondNav_active {
+                background: #00a3f0;
+            }
+            .narrowMenu_side_active {
+                border-left: 4px solid #00a3f0;
+                background: #2b4976;
+            }
+            .side_collaps_ul{
+                background-color: #133567;
+                &>li:hover{
+                    .narrowMenu_side_active
+                }
+            }
+
+        }
+        .ivu-menu-opened{
+            &>.ivu-menu-submenu-title{
+                background: #00A3F0;
+            }
+            .ivu-menu{
+                background: #0f3a6b;
+            }
+            .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-item:hover{
+                background: #234e7b;
+                color: #fff;
+            }
+            .ivu-menu-item-active:not(.ivu-menu-submenu):after{
+                background: #00a3f0;
+            }
+        }
+    }
+}
+
+

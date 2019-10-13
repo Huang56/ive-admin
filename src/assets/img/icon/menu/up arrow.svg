@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>up arrow</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板">
+            <g id="up-arrow"></g>
+            <path d="M256.350288,203.142136 L129.071068,330.421356 C125.165825,334.326599 118.834175,334.326599 114.928932,330.421356 C111.023689,326.516113 111.023689,320.184464 114.928932,316.279221 L249.279221,181.928932 C253.184464,178.023689 259.516113,178.023689 263.421356,181.928932 L397.771645,316.279221 C401.676888,320.184464 401.676888,326.516113 397.771645,330.421356 C393.866402,334.326599 387.534752,334.326599 383.629509,330.421356 L256.350288,203.142136 Z" id="路径" fill="#D5E2E5" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

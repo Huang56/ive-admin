@@ -1,0 +1,226 @@
+@import '~iview/src/styles/index.less';
+
+// Here are the variables to cover, such as:
+@primary-color: #0EC1AF;
+@btn-border-radius-small: 4px;
+
+.pdr-0{
+  padding-right: 0px !important;
+}
+.ivu-btn{
+	min-width: 88px;
+}
+.ivu-btn i{
+	font-style: normal;
+}
+.ivu-btn-primary{
+	background-color: #F08519;
+  border-color: #F08519;
+  // position: relative;
+}
+.ivu-btn-primary:hover{
+	background-color: #F69F21;
+  border-color: #F69F21;
+}
+.ivu-btn-primary:focus,.ivu-btn-default:focus,.ivu-btn-text:focus{
+	box-shadow: none;
+}
+.ivu-btn-default{
+	border: 1px solid #595959;
+	color: #262626;
+	// position: relative;
+}
+
+.ivu-btn-default:hover,.ivu-btn-text:hover{
+	border: 1px solid #F69F21;
+	color: #F69F21;
+}
+.ivu-btn [class^="icon-"]::before{
+	font-size: 16px;
+	position: relative;
+	top: 2px;
+}
+
+.ivu-select-item{
+	height:30px;
+}
+
+.ivu-input[disabled]{
+	background: #F5F5F5;
+	border: 1px solid #E8E8E8;
+	color: #595959;
+}
+.ivu-select-disabled .ivu-select-selected-value{
+  color: #595959;
+  background: #F5F5F5;
+}
+.ivu-input:hover{
+  border-color: #8C8C8C;
+}
+.ivu-input:focus{
+  border-color: #3ecdbf;
+}
+.ivu-select-selection:hover{
+  border-color: #8C8C8C;
+}
+.ivu-select-selection:focus-within{
+  border-color: #3ecdbf;
+}
+.dateTime .ivu-form-item-content .ivu-date-picker:nth-child(1) .ivu-input:hover{
+  border-color: #8C8C8C;
+}
+.dateTime .ivu-form-item-content .ivu-date-picker:nth-child(3) .ivu-input:hover{
+  border-color: #8C8C8C;
+}
+.ivu-btn-primary.disabled, .ivu-btn-primary[disabled], fieldset[disabled] .ivu-btn-primary, .ivu-btn-primary.disabled:hover, .ivu-btn-primary[disabled]:hover, fieldset[disabled] .ivu-btn-primary:hover, .ivu-btn-primary.disabled:focus, .ivu-btn-primary[disabled]:focus, fieldset[disabled] .ivu-btn-primary:focus, .ivu-btn-primary.disabled:active, .ivu-btn-primary[disabled]:active, fieldset[disabled] .ivu-btn-primary:active, .ivu-btn-primary.disabled.active, .ivu-btn-primary[disabled].active, fieldset[disabled] .ivu-btn-primary.active{
+  background: #BFBFBF !important;
+  color: #FFFFFF;
+  opacity: 0.8
+}
+
+/*栅格布局*/
+@media (min-width: 1920px) {
+  .ivu-col-span-lg-3{
+    display: block;
+    width: 12.5%;
+  }
+}
+@media (max-width: 1919px) {
+  .ivu-col-span-md-4{
+    display: block;
+    width: 16.66666667%;
+  }
+}
+
+/*栅格布局*/
+@media (min-width: 1920px) {
+  .ivu-col-span-lg-6{
+    display: block;
+    width: 25%;
+  }
+}
+@media (max-width: 1919px) {
+  .ivu-col-span-md-8{
+    display: block;
+    width: 33.3333333%;
+  }
+}
+
+.ivu-tabs-bar{
+  margin-bottom: 0;
+}
+
+.ivu-tabs-nav .ivu-tabs-tab:hover{
+  color: #0EC1AF;
+}
+
+
+.ivu-breadcrumb{
+  line-height: 32px;
+}
+//穿梭框样式---start
+.ivu-transfer-list{
+  height: 201px;
+  width: 162px;
+}
+.ivu-transfer-list-content-item:hover{
+  background: #E0F6F5;
+}
+.ivu-transfer-list-content-item:active{
+  background: #0EC1AF;
+  color: #fff;
+}
+.ivu-transfer-list-header{
+  padding: 6px 16px;
+}
+.ivu-transfer-operation .ivu-btn-primary[disabled]{
+  background: #fff !important;
+  border: 1px solid #E8E8E8;
+  color: #dadada;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ivu-transfer-operation .ivu-btn-primary{
+  background: #fff !important;
+  border: 1px solid #CECECE;
+  color: #737373;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//穿梭框样式---end
+
+// checkBox radio
+.ivu-checkbox-inner,.ivu-radio-checked .ivu-radio-inner,{
+  border:1px solid #d9d9d9;
+}
+.ivu-checkbox-checked .ivu-checkbox-inner,.ivu-radio-inner:after{
+  background-color: #F08519;
+  border-color: #F08519;
+}
+.ivu-checkbox:hover .ivu-checkbox-inner,.ivu-radio:hover .ivu-radio-inner{
+  border-color: #F08519;
+
+}
+.ivu-checkbox-focus,.ivu-radio-focus{
+  box-shadow: none;
+}
+// checkBox radio---end
+
+
+
+#print {
+  position: absolute;
+  width: 1024px;
+  .title {
+          margin: 0;
+          padding: 10px;
+          text-align: center;
+          border-bottom: 1px solid #ddd;
+      }
+  .header {
+          margin: 0;
+          padding: 10px;
+          display: flex;
+          flex-direction: row;
+          border-bottom: 1px solid #ddd;
+      }
+  
+      .orderId,
+      .orderType {
+          flex: 1;
+      }
+  
+      .container {
+          margin: 0;
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+      }
+      .container .orderList span {
+        display: inline-block;
+        margin: 0 5px 5px 0;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+      }
+  
+      .container p {
+          margin: 0;
+          padding: 5px 0;
+      }
+  
+      .footer {
+          margin: 0;
+          padding: 10px;
+          display: flex;
+          flex-direction: row;
+      }
+  
+      .footer>div {
+          flex: 1;
+      }
+}

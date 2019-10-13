@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="513px" height="512px" viewBox="0 0 513 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/operation/拉伸</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M16,0 C24.836556,-1.623249e-15 32,7.163444 32,16 L32,282.666667 C32,291.503223 24.836556,298.666667 16,298.666667 C7.163444,298.666667 1.082166e-15,291.503223 0,282.666667 L0,16 C-1.082166e-15,7.163444 7.163444,1.623249e-15 16,0 Z M95,0 C103.836556,-1.623249e-15 111,7.163444 111,16 L111,282.666667 C111,291.503223 103.836556,298.666667 95,298.666667 C86.163444,298.666667 79,291.503223 79,282.666667 L79,16 C79,7.163444 86.163444,1.623249e-15 95,0 Z" id="path-1"></path>
+    </defs>
+    <g id="symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/operation/拉伸">
+            <g id="color1">
+                <g transform="translate(201.000000, 107.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#8DB0B8" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

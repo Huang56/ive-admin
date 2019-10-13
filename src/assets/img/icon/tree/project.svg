@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/tree/project</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M426.3505,172.0195 L95.851,172.0195 L95.851,98.8355 C95.851,91.743 101.6025,86 108.683,86 L235.4375,86 C242.5255,86 248.277,91.743 248.277,98.8355 L248.277,120.4315 L413.5185,120.4315 C420.599,120.4315 426.3505,126.1785 426.3505,133.271 L426.3505,172.0195 Z M115.4735,141.8375 L115.4735,159.325 L406.728,159.325 L406.728,141.8375 L115.4735,141.8375 Z M427.8645,402.918 C427.8645,410.0025 420.317,425.553 413.229,425.553 L106.4195,425.553 C99.331,425.553 94.345,416.4265 94.345,409.3375 L45,207.494 C45,200.4015 50.743,194.654 57.8315,194.654 L453.206,194.654 C460.2945,194.654 466.046,200.4015 466.046,207.494 L427.8645,402.918 Z" id="path-1"></path>
+    </defs>
+    <g id="symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/tree/project">
+            <g id="Folder">
+                <g id="Group">
+                    <rect id="Rectangle-path" fill="#000000" fill-rule="nonzero" opacity="0" x="0" y="0" width="512" height="512"></rect>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Combined-Shape" fill="#F08519" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    <g id="color1" mask="url(#mask-2)" fill="#000000">
+                        <rect id="Rectangle-4" x="0" y="0" width="512" height="512"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

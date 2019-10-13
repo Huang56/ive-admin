@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/tool/包材编码对照表</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M159.5,208 L159.5,263.75 L415,263.75 L415,208 L159.5,208 Z M127.5,208 L32,208 L32,263.75 L127.5,263.75 L127.5,208 Z M159.5,351 L399,351 C407.836556,351 415,343.836556 415,335 L415,295.75 L159.5,295.75 L159.5,351 Z M127.5,351 L127.5,295.75 L32,295.75 L32,335 C32,343.836556 39.163444,351 48,351 L127.5,351 Z M159.5,120.25 L159.5,176 L415,176 L415,120.25 L159.5,120.25 Z M127.5,120.25 L32,120.25 L32,176 L127.5,176 L127.5,120.25 Z M159.5,32 L159.5,88.25 L415,88.25 L415,48 C415,39.163444 407.836556,32 399,32 L159.5,32 Z M127.5,32 L48,32 C39.163444,32 32,39.163444 32,48 L32,88.25 L127.5,88.25 L127.5,32 Z M48,0 L399,0 C425.509668,-3.55271368e-15 447,21.490332 447,48 L447,335 C447,361.509668 425.509668,383 399,383 L48,383 C21.490332,383 3.55271368e-15,361.509668 0,335 L0,48 C-3.55271368e-15,21.490332 21.490332,5.32907052e-15 48,0 Z" id="path-1"></path>
+    </defs>
+    <g id="symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/tool/包材编码对照表">
+            <g id="color1">
+                <g transform="translate(33.000000, 65.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#262626" fill-rule="nonzero" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

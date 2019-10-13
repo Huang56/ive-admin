@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/operation/close</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M150,127.372583 L272.686292,4.6862915 C278.93468,-1.56209717 289.06532,-1.56209717 295.313708,4.6862915 C301.562097,10.9346802 301.562097,21.0653198 295.313708,27.3137085 L172.627417,150 L295.313708,272.686292 C301.562097,278.93468 301.562097,289.06532 295.313708,295.313708 C289.06532,301.562097 278.93468,301.562097 272.686292,295.313708 L150,172.627417 L27.3137085,295.313708 C21.0653198,301.562097 10.9346802,301.562097 4.6862915,295.313708 C-1.56209717,289.06532 -1.56209717,278.93468 4.6862915,272.686292 L127.372583,150 L4.6862915,27.3137085 C-1.56209717,21.0653198 -1.56209717,10.9346802 4.6862915,4.6862915 C10.9346802,-1.56209717 21.0653198,-1.56209717 27.3137085,4.6862915 L150,127.372583 Z" id="path-1"></path>
+    </defs>
+    <g id="symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/operation/close">
+            <g id="close">
+                <rect id="Rectangle" fill="#D8D8D8" opacity="0" x="0" y="0" width="512" height="512"></rect>
+                <g id="Group" transform="translate(106.000000, 106.000000)">
+                    <g id="color1">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Combined-Shape" fill="#A6A6A6" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

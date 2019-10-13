@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/menu/index</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M200.281015,272.424877 L200.281015,404.564809 C200.281015,411.780798 194.4313,417.630513 187.215311,417.630513 L100.110617,417.630513 C92.8946278,417.630513 87.0449128,411.780798 87.0449128,404.564809 L87.0449128,231.346966 L13.3578819,231.346966 C1.33586058,231.346966 -4.30567589,216.481166 4.68948304,208.505195 L235.516921,3.83144264 C240.463581,-0.554740241 247.90706,-0.554740241 252.853719,3.83144264 L483.681157,208.505195 C492.676316,216.481166 487.03478,231.346966 475.012758,231.346966 L400.62181,231.346966 L400.62181,404.564809 C400.62181,411.780798 394.772095,417.630513 387.556106,417.630513 L301.540221,417.630513 C294.324232,417.630513 288.474517,411.780798 288.474517,404.564809 L288.474517,272.424877 L200.281015,272.424877 Z" id="path-1"></path>
+    </defs>
+    <g id="symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/menu/index">
+            <g>
+                <rect id="Rectangle-21" fill-opacity="0" fill="#F0F0F0" x="0" y="0" width="512" height="512"></rect>
+                <g id="Page-1" transform="translate(12.137931, 48.448276)">
+                    <g id="color1">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#D5E2E5" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

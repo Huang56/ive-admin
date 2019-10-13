@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/operation/left arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M17.3513243,285.02069 C15.3683158,287.006897 12.8895552,288 10.1629185,288 C7.43628186,288 4.95752124,287.006897 2.97451274,285.02069 C-0.991504248,281.048276 -0.991504248,274.593103 2.97451274,270.62069 L129.391304,144 L2.97451274,17.3793103 C-0.991504248,13.4068966 -0.991504248,6.95172414 2.97451274,2.97931034 C6.94052974,-0.993103448 13.3853073,-0.993103448 17.3513243,2.97931034 L150.956522,136.8 C154.922539,140.772414 154.922539,147.227586 150.956522,151.2 L17.3513243,285.02069 L17.3513243,285.02069 Z" id="path-1"></path>
+    </defs>
+    <g id="symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/operation/left-arrow">
+            <g id="left-arrow">
+                <rect id="Rectangle-15" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="512" height="512"></rect>
+                <g id="color1" transform="translate(179.000000, 112.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#D5E2E5" transform="translate(76.965517, 144.000000) rotate(-360.000000) translate(-76.965517, -144.000000) " xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

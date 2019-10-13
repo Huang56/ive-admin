@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="117px" height="85px" viewBox="0 0 117 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="23.3803445%" y1="81.0893544%" x2="90.5470717%" y2="-1.09743478%" id="linearGradient-1">
+            <stop stop-color="#4AC0F0" offset="0%"></stop>
+            <stop stop-color="#44B3E6" offset="13.99%"></stop>
+            <stop stop-color="#3291CA" offset="39.76%"></stop>
+            <stop stop-color="#175B9E" offset="74.19%"></stop>
+            <stop stop-color="#002E79" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="17.0928406%" y1="96.7730231%" x2="99.6879173%" y2="-12.091252%" id="linearGradient-2">
+            <stop stop-color="#005AAA" offset="0%"></stop>
+            <stop stop-color="#0D56A7" offset="6.569017%"></stop>
+            <stop stop-color="#2F4C9F" offset="18.68%"></stop>
+            <stop stop-color="#653C92" offset="35%"></stop>
+            <stop stop-color="#B02680" offset="54.69%"></stop>
+            <stop stop-color="#CD1E79" offset="61.73%"></stop>
+            <stop stop-color="#D21577" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="16.8558426%" y1="1.89169146%" x2="81.3782807%" y2="98.5371712%" id="linearGradient-3">
+            <stop stop-color="#005AAA" offset="0%"></stop>
+            <stop stop-color="#0D56A7" offset="6.569017%"></stop>
+            <stop stop-color="#2F4C9F" offset="18.68%"></stop>
+            <stop stop-color="#653C92" offset="35%"></stop>
+            <stop stop-color="#B02680" offset="54.69%"></stop>
+            <stop stop-color="#CD1E79" offset="61.73%"></stop>
+            <stop stop-color="#D21577" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="14.1779503%" y1="-2.17015776%" x2="61.6897516%" y2="64.4560586%" id="linearGradient-4">
+            <stop stop-color="#005AAA" offset="0%"></stop>
+            <stop stop-color="#0D56A7" offset="6.569017%"></stop>
+            <stop stop-color="#2F4C9F" offset="18.68%"></stop>
+            <stop stop-color="#653C92" offset="35%"></stop>
+            <stop stop-color="#B02680" offset="54.69%"></stop>
+            <stop stop-color="#CD1E79" offset="61.73%"></stop>
+            <stop stop-color="#D21577" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="目录" transform="translate(-364.000000, -13.000000)">
+            <g id="分组-4" transform="translate(316.000000, 0.000000)">
+                <g id="Sider-Box">
+                    <g id="Group-3">
+                        <g id="logo">
+                            <rect id="Rectangle" x="0" y="0" width="214" height="108"></rect>
+                            <g id="logo-copy" transform="translate(48.000000, 13.000000)">
+                                <g id="Group-2" transform="translate(30.000000, 0.000000)" fill-rule="nonzero">
+                                    <g id="Group">
+                                        <path d="M19.8182698,51.4338462 C19.8182698,51.4338462 28.8657407,60.7384615 39.291874,51.0030769 L57.3006495,33.6 C57.3006495,33.6 58.1623134,33.0830769 57.1283167,32.3938462 C57.1283167,32.3938462 48.0808458,23.9507692 38.0855445,34.4615385 L29.2104063,43.0769231 C29.2104063,43.0769231 25.160586,47.4707692 17.5779436,47.04 C17.5779436,47.04 16.1992814,47.04 14.6482863,46.4369231 L19.8182698,51.4338462 Z" id="Shape" fill="url(#linearGradient-1)"></path>
+                                        <path d="M10.9431316,42.8184615 C10.9431316,42.8184615 19.1289386,48.8492308 27.5732449,42.0430769 C27.5732449,42.0430769 28.0040768,41.6123077 27.6594113,41.2676923 L18.6981067,32.9969231 C18.6981067,32.9969231 12.4941266,25.8461538 0.0861663903,32.3938462 L10.9431316,42.8184615 Z" id="Shape" fill="#01508E"></path>
+                                        <path d="M37.9993781,4.65230769 C37.9993781,4.65230769 28.9519071,-4.65230769 18.5257739,5.08307692 L0.516998342,22.4861538 C0.516998342,22.4861538 -0.344665561,23.0030769 0.689331122,23.6923077 C0.689331122,23.6923077 9.7368021,32.1353846 19.7321034,21.6246154 L28.6072416,13.0953846 C28.6072416,13.0953846 32.6570619,8.70153846 40.2397043,9.13230769 C40.2397043,9.13230769 41.6183665,9.13230769 43.1693615,9.73538462 L37.9993781,4.65230769 Z" id="Shape" fill="url(#linearGradient-2)"></path>
+                                        <path d="M40.0673715,25.76 C42.2215312,25.6738462 44.5480238,24.8984615 46.9606827,23.52 L38.6887092,16.8 C38.6887092,16.8 36.4483831,15.1630769 33.0017275,15.3353846 C30.6752349,15.5076923 28.5210752,16.3692308 26.6254146,18.0923077 L33.9495578,23.8646154 C33.9495578,23.9507692 36.1898839,26.0184615 40.0673715,25.76 Z" id="Shape" fill="url(#linearGradient-3)"></path>
+                                        <path d="M41.1013682,16.3692308 L51.9583333,25.9323077 C53.6816611,25.5015385 55.4911553,24.8984615 57.6453151,23.7784615 L47.8223466,14.3015385 C47.8223466,14.3015385 40.3258706,6.72 30.1582366,14.1292308 C30.1582366,14.1292308 29.8997374,14.3876923 29.8997374,14.6461538 C36.0175511,12.0615385 41.1013682,16.3692308 41.1013682,16.3692308 Z" id="Shape" fill="url(#linearGradient-4)"></path>
+                                    </g>
+                                </g>
+                                <text id="WMS系统平台" font-family="PingFangSC-Semibold, PingFang SC" font-size="18" font-weight="500" fill="#FFFFFF">
+                                    <tspan x="0" y="83">WMS系统平台</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
