@@ -13,6 +13,17 @@ module.exports = {
     },
     https: false,
     hotOnly: false,
+    host: 'localhost',
+    port: 8080,
+    proxy: {  //代理配置
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    },
   },
   // 关闭eslint
   // lintOnSave: process.env.NODE_ENV === "development",

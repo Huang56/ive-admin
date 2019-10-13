@@ -2,21 +2,15 @@
   <div class="admin_login_wrapper">
     <div class="admin_login_form" @keyup.enter="myFakeLogin">
       <p>登录界面</p>
-      <Form
-        ref="formCustom"
-        class="loginForm"
-        :model="formCustom"
-        :rules="ruleCustom"
-        :label-width="80"
-      >
+      <Form ref="formCustom" class="loginForm" :model="formCustom" :label-width="80">
+        <FormItem label="UserName" prop="username">
+          <Input type="text" v-model="formCustom.username"></Input>
+        </FormItem>
         <FormItem label="Password" prop="passwd">
           <Input type="password" v-model="formCustom.passwd"></Input>
         </FormItem>
         <FormItem label="Confirm" prop="passwdCheck">
           <Input type="password" v-model="formCustom.passwdCheck"></Input>
-        </FormItem>
-        <FormItem label="Age" prop="age">
-          <Input type="text" v-model="formCustom.age" number></Input>
         </FormItem>
         <FormItem prop="captcha">
           <Row :gutter="16">
@@ -32,8 +26,9 @@
             </Col>
             <Col :span="8">
               <div class="captchaimg" @click="captchaFn">
-                <img :src="captchaSrc" ref="captchaimg" v-show="captchaSrc" alt="验证码">
-                <div class="loading">
+                <!-- <img :src="captchaSrc" ref="captchaimg" v-show="captchaSrc" alt="验证码"> -->
+                <img src="./images/captcha.svg" ref="captchaimg" v-show="captchaSrc" alt="验证码">
+                <div class="loading" v-show="!captchaSrc">
                   <Icon type="ios-loading"/>
                   <span>加载中...</span>
                 </div>
@@ -42,7 +37,7 @@
           </Row>
         </FormItem>
         <FormItem>
-          <Button type="primary" @click="handleSubmit('formCustom')">Submit</Button>
+          <Button type="primary" @click="login">Submit</Button>
           <Button @click="handleReset('formCustom')" style="margin-left: 8px">Reset</Button>
         </FormItem>
       </Form>
@@ -50,87 +45,83 @@
   </div>
 </template>
 <script>
-// import {
-//   captcha
-// } from "@/api/login/index";
+import { captcha, reqPwdLogin } from "@/api/login/index";
 export default {
   data() {
-    const validatePass = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("Please enter your password"));
-      } else {
-        if (this.formCustom.passwdCheck !== "") {
-          // 对第二个密码框单独验证
-          this.$refs.formCustom.validateField("passwdCheck");
-        }
-        callback();
-      }
-    };
-    const validatePassCheck = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("Please enter your password again"));
-      } else if (value !== this.formCustom.passwd) {
-        callback(new Error("The two input passwords do not match!"));
-      } else {
-        callback();
-      }
-    };
-    const validateAge = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("Age cannot be empty"));
-      }
-      // 模拟异步验证效果
-      setTimeout(() => {
-        if (!Number.isInteger(value)) {
-          callback(new Error("Please enter a numeric value"));
-        } else {
-          if (value < 18) {
-            callback(new Error("Must be over 18 years of age"));
-          } else {
-            callback();
-          }
-        }
-      }, 1000);
-    };
-
     return {
+      captchaSrc: "true", //验证码地址
       formCustom: {
+        username: "",
         passwd: "",
         passwdCheck: "",
-        age: "",
         captcha: ""
-      },
-      ruleCustom: {
-        passwd: [{ validator: validatePass, trigger: "blur" }],
-        passwdCheck: [{ validator: validatePassCheck, trigger: "blur" }],
-        age: [{ validator: validateAge, trigger: "blur" }]
       }
     };
   },
   methods: {
-    handleSubmit(name) {
-      this.$refs[name].validate(valid => {
-        if (valid) {
-          this.$Message.success("Success!");
-        } else {
-          this.$Message.error("Fail!");
-        }
-      });
-    },
     handleReset(name) {
       this.$refs[name].resetFields();
+      this.captchaFn();
+    },
+
+    captchaFn() {
+      // console.log('captchaFn')
+      this.captchaSrc = "";
+
+      // window.location = 'http://localhost:5000/captcha'
+      // 一旦给img指定新的src值, 浏览器就会自动发请求获取数据显示为图片  (添加时间戳参数)
+
+      this.$nextTick(() => {
+        let captchaSrc = ''
+        captchaSrc = captcha() + "?time=" + Date.now();
+        setTimeout(()=>{
+          this.captchaSrc = captchaSrc
+        }, 1000)
+        this.$refs.captchaimg.addEventListener("error", () => {
+          this.captchaSrc = "";
+        });
+      });
+    },
+
+    async login() {
+      // 收集表单数据
+      console.log('login');
+      const { username, passwd, captcha } = this.formCustom;
+      let result;
+
+      //密码
+      if (!username.trim()) {
+        return alert("必须指定用户名");
+      } else if (!passwd.trim()) {
+        return alert("必须指定密码");
+      } else if (!/^.{4}$/.test(captcha)) {
+        return alert("必须指定4位验证码");
+      }
+
+      // 发送登录的ajax请求
+      // result = await reqPwdLogin({ username, passwd, captcha });
+       // 2.跳转到个人中心
+       this.$router.replace("/home");
+      return console.log("/home")
+      // 如果失败了,更新图形验证码
+      if (result.code === 1) {
+        this.updataCaptcha;
+      }
+
+      // 根据result来处理
+      if (result.code === 0) {
+         this.$Message.success("Success!");
+        // 2.跳转到个人中心
+        this.$router.replace("/home");
+      } else {
+        // 登录失败
+        this.$Message.error("Fail!");
+      }
     }
   },
-  captchaFn() {
-    // console.log('captchaFn')
-    this.captchaSrc = "";
 
-    this.$nextTick(() => {
-      this.captchaSrc = captcha() + "?uuid=" + this.mathRandom;
-      this.$refs.captchaimg.addEventListener("error", () => {
-        this.captchaSrc = "";
-      });
-    });
+  mounted() {
+    this.captchaFn();
   }
 };
 </script>
@@ -167,6 +158,12 @@ export default {
     /deep/.ivu-btn-small {
       font-size: 16px;
     }
+  }
+}
+.captchaimg {
+  height: 45px;
+  img {
+    width: 100px;
   }
 }
 </style>
