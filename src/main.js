@@ -6,6 +6,7 @@ import router from './router/index'
 //全局样式
 import './assets/css/global.css' 
 import './assets/customTheme/theme.less'
+import './assets/font/style.css'//图标字体
 
 Vue.config.productionTip = false
 
