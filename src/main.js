@@ -10,6 +10,9 @@ import './assets/font/style.css'//图标字体
 
 Vue.config.productionTip = false
 
+// 注册全局指令, 组件
+import './common/index.js'
+
 // 注册iview
 Vue.use(iView, {
   transfer: true,

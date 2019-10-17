@@ -19,7 +19,7 @@
         </Menu>
       </Sider>
       <Layout>
-        <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
+        <Header >
           <subtabs></subtabs>
           <div class="logout">
             <span
@@ -55,7 +55,7 @@
   </div>
 </template>
 <script>
-import subtabs from "./../../componments/subtabs";
+import subtabs from "./../../components/subtabs";
 export default {
   components:{
     subtabs
@@ -128,6 +128,23 @@ export default {
 </script>
 
 <style scoped lang='less'>
+/*header style*/
+.ivu-layout-header {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 16px 0 0;
+}
+.logoImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    height: 108px;
+    cursor: pointer;
+}
+
 .logout img {
   width: 24px;
   height: 24px;
@@ -235,7 +252,7 @@ export default {
       width: 112px;
       display: none;
       z-index: 999;
-      background-color: #2b566b;
+      background-color: #515A6E;
       border-radius: 4px;
       height: 24px;
       line-height: 24px;
