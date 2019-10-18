@@ -2,6 +2,7 @@ import Vue from 'vue'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css';
 import App from './App.vue'
+import store from './store/index' // vuex
 import router from './router/index'
 //全局样式
 import './assets/css/global.css' 

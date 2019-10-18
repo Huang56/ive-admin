@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import routeConfig from './routeConfig' 
+import Store from '@/store/index' // vuex
+
 const Login = r => require(['../views/login'], r)
 const Home = r => require(['../views/Home/Home'], r)
 const Invalid = r => require(['../views/invalid'], r)
@@ -65,6 +68,17 @@ let routes = [
 
 ]
 
+// 子路由
+let route = []
+routeConfig.forEach(item => {
+    if(item.children){
+        route = route.concat(item.children)
+    } else {
+        route.push(item)
+    }
+})
+
+routes[1].children.splice(1, 0, ...route); //放入主路由children
 
 let router = new Router({
     routes: routes,

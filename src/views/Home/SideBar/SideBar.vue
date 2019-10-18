@@ -141,6 +141,7 @@ export default {
       menuSelect: "",
       hiddenSearchIcon: false,
       onQueryChangeValue: "",
+      activeIndex: "",
       activeName: "", //默认高亮菜单
       routes: []
     };

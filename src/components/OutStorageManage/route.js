@@ -2,7 +2,7 @@ const router = [
   {
     path: 'orderPool',
     name: 'orderPool',
-    component: (r) => require(['@/componments/outStorageManage/orderPool/index'], r),
+    component: (r) => require(['@/components/OutStorageManage/OrderPool/Index'], r),
     meta: {
       title: '订单池',
       keepAlive: true
@@ -11,7 +11,7 @@ const router = [
   {
     path: 'orderAssign',
     name: 'orderAssign',
-    component: (r) => require(['@/componments/outStorageManage/orderAssign/orderAssign'], r),
+    component: (r) => require(['@/components/OutStorageManage/OrderAssign/OrderAssign'], r),
     meta: {
       title: '订单分配',
       keepAlive: true
@@ -20,7 +20,7 @@ const router = [
   {
     path: 'orderAssignDetail',
     name: 'orderAssignDetail',
-    component: (r) => require(['@/componments/outStorageManage/orderAssign/orderAssignDetail'], r),
+    component: (r) => require(['@/components/OutStorageManage/OrderAssign/OrderAssignDetail'], r),
     meta: {
       title: '订单分配',
       keepAlive: true,

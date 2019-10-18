@@ -2,7 +2,7 @@
 <template>
   <div class="layout">
     <div :style="{minHeight: '100vh'}" class="ivu-layout ivu-layout-has-sider">
-      <sideBar /> 
+      <sideBar/>
       <Layout>
         <Header>
           <subtabs></subtabs>
@@ -25,15 +25,10 @@
             </span>
           </div>
         </Header>
-        <Content :style="{padding: '0 16px 16px'}">
-          <Breadcrumb :style="{margin: '16px 0'}">
-            <BreadcrumbItem>Home</BreadcrumbItem>
-            <BreadcrumbItem>Components</BreadcrumbItem>
-            <BreadcrumbItem>Layout</BreadcrumbItem>
-          </Breadcrumb>
-          <Card>
-            <div style="height: 600px">Content</div>
-          </Card>
+        <Content class="content">
+          <keep-alive >
+            <router-view ref="content"></router-view>
+          </keep-alive>
         </Content>
       </Layout>
     </div>
@@ -47,12 +42,11 @@ import menuList from "../../router/menu"; // siderMenu
 export default {
   components: {
     subtabs,
-    sideBar,
+    sideBar
   },
   data() {
     return {
-      fullScreen: true,
-
+      fullScreen: true
     };
   },
   computed: {
@@ -128,16 +122,16 @@ export default {
 </script>
 
 <style scoped lang='less'>
-// loyout 
+// loyout
 .ivu-layout {
-    display: flex;
-    flex-direction: column;
-    flex: auto;
-    background: #f5f7f9;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  background: #f5f7f9;
 }
 
 .ivu-layout.ivu-layout-has-sider {
-    flex-direction: row;
+  flex-direction: row;
 }
 /*header style*/
 .ivu-layout-header {
