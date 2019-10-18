@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import routeConfig from './routeConfig' 
+import routeConfig from './routeConfig'
 import Store from '@/store/index' // vuex
 
 const Login = r => require(['../views/login'], r)
@@ -71,7 +71,7 @@ let routes = [
 // 子路由
 let route = []
 routeConfig.forEach(item => {
-    if(item.children){
+    if (item.children) {
         route = route.concat(item.children)
     } else {
         route.push(item)
@@ -84,4 +84,23 @@ let router = new Router({
     routes: routes,
 })
 
+
+// 全局前置路由守卫, 判断进入的路由，是否保存
+router.beforeEach((to, from, next) => {
+    if (to.meta.keepAlive) {
+        //vue 保存主要路由组件的活跃状态
+        Store.commit('ADD_KEEPALIVE', { component: to.name })
+    }
+    if (to.name === 'login' || to.name === 'invalidpage') {
+        next()
+    } else {
+        if (Store.state.loginStatus === 'V10004') {
+            next({
+                path: 'invalidpage'
+            })
+        } else {
+            next()
+        }
+    }
+})
 export default router

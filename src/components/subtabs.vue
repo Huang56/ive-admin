@@ -65,7 +65,7 @@ export default {
       mouseRightKeyFlag: false,
       mouseRightKeyListLeft: 0,
       currentIndex: 0, //当前右键点击的index
-      mouseRightKeyTimer: null, 
+      mouseRightKeyTimer: null
     };
   },
   methods: {
@@ -120,7 +120,26 @@ export default {
     }
   },
   mounted() {
-    console.log("subtabs");
+    console.log("subtabs, mounted");
+    // 所有点击过保存的keep-alive的Tab
+    let tagList = window.sessionStorage.getItem("tagList");
+    if (tagList && tagList !== "") {
+      console.log(JSON.parse(tagList), "json");
+      this.tagList = JSON.parse(tagList);
+    } else {
+      this.$router.push({ name: "homePage" });
+    }
+
+    // 当前的路径Tab
+    this.currentTab = {
+      title: this.$route.meta.title,
+      path: [this.$route.fullPath]
+    };
+  },
+  watch: {
+    $route: function(to, from) {
+      console.log(to, from, "$route");
+    }
   }
 };
 </script><style lang='less' scoped>

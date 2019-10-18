@@ -36,55 +36,50 @@
             <span>我的首页</span>
           </MenuItem>
         </template>
-        <template>
-          <Submenu name="1">
-            <template slot="title">
-              <Icon type="ios-paper"/>内容管理
-            </template>
-
-            <!-- 二级菜单 -->
-            <draggable>
-              <template>
-                <template>
-                  <MenuItem name="1-1">文章管理</MenuItem>
-                  <MenuItem name="1-2">评论管理</MenuItem>
-                  <MenuItem name="1-3">举报管理</MenuItem>
-                </template>
+        <template v-for="(oneMenu,$index1) in routeMenus">
+          <template v-if="oneMenu.children && oneMenu.children.length !==0">
+            <Submenu :name="oneMenu.id" class="menuItem" :key="$index1">
+              <template slot="title">
+                <i :class="oneMenu.menuIcon" class="ivu-icon"></i>
+                <span>{{ oneMenu.menuTitle }}</span>
               </template>
-            </draggable>
-          </Submenu>
-        </template>
-        <template>
-          <Submenu name="2">
-            <template slot="title">
-              <Icon type="ios-people"/>用户管理
-            </template>
-            <!-- 三级菜单 -->
-            <draggable>
-              <Submenu name="2-1">
-                <template slot="title">
-                  <Icon type="ios-people"/>详细用户管理
-                </template>
-                <draggable>
-                  <MenuItem name="2-1-1">文章管理</MenuItem>
-                  <MenuItem name="2-1-2">评论管理</MenuItem>
-                  <MenuItem name="2-1-3">举报管理</MenuItem>
-                </draggable>
-              </Submenu>
 
-              <Submenu name="2-2">
-                <template slot="title">
-                  <Icon type="ios-people"/>内容管理
+              <!-- 二级菜单 -->
+              <draggable>
+                <template v-for="(twoMenu,$index2) in oneMenu.children">
+                  <template v-if="twoMenu.children&&item2.children.length!==0">
+                    <Submenu :name="twoMenu.id" :key="$index2" class="ignore-elements level3">
+                      <template slot="title">
+                        <i :class="twoMenu.menuIcon" class="ivu-icon"></i>
+                        <span>{{ twoMenu.menuTitle }}</span>
+                      </template>
+                      <!-- 三级菜单 -->
+                      <draggable v-model="twoMenu.children" :options="dragOptions.dragOptions4">
+                        <MenuItem
+                          v-if="threeMenu.index === undefined"
+                          :name="item3.id"
+                          v-for="(threeMenu,$index3) in twoMenu.children"
+                          :key="$index3"
+                          :to="{ name: threeMenu.menuPath }"
+                        >{{threeMenu.menuTitle}}</MenuItem>
+                      </draggable>
+                    </Submenu>
+                  </template>
+                  <!-- 只有二级菜单 -->
+                  <template v-else>
+                    <template v-if="twoMenu.index === undefined">
+                      <MenuItem
+                        class="level2"
+                        :name="twoMenu.id"
+                        :key="$index2"
+                        :to="{ name: twoMenu.menuPath }"
+                      >{{twoMenu.menuTitle}}</MenuItem>
+                    </template>
+                  </template>
                 </template>
-                <!-- 三级菜单 -->
-                <draggable>
-                  <MenuItem name="2-2-1">文章内容</MenuItem>
-                  <MenuItem name="2-2-2">评论内容</MenuItem>
-                  <MenuItem name="2-1-3">举报内容</MenuItem>
-                </draggable>
-              </Submenu>
-            </draggable>
-          </Submenu>
+              </draggable>
+            </Submenu>
+          </template>
         </template>
       </Menu>
     </template>
@@ -126,6 +121,28 @@
 <style lang="less" scoped>
 </style>
 <script>
+// mock数据
+let routeMenus = [
+  {
+    id: "/systemSeting",
+    menuIcon: "icon-systemSeting",
+    menuTitle: "任务管理",
+    children: [
+      { id: "/taskConfig", menuPath: "taskConfig", menuTitle: "任务配置" },
+      { id: "/taskList", menuPath: "taskList", menuTitle: "任务汇总" },
+      ]
+  },
+  {
+    id: "/outbound",
+    menuIcon: "icon-outbound",
+    menuTitle: "出库管理",
+    children: [
+      { id: "/orderPool", menuPath: "orderPool", menuTitle: "订单池" },
+      { id: "/orderAssign", menuPath: "orderAssign", menuTitle: "订单分配" },
+      ]
+  }
+];
+
 import draggable from "vuedraggable";
 export default {
   name: "sideBar",
@@ -135,7 +152,7 @@ export default {
   props: {},
   data() {
     return {
-      isCollapsed: true,
+      isCollapsed: false,
       menuList: [], // siderMenu-start
       isShow: true, //搜索框
       menuSelect: "",
@@ -143,7 +160,7 @@ export default {
       onQueryChangeValue: "",
       activeIndex: "",
       activeName: "", //默认高亮菜单
-      routes: []
+      routeMenus: [] //当前用户的菜单
     };
   },
   methods: {
@@ -158,7 +175,27 @@ export default {
     },
     menuitemClasses() {
       console.log("menuitemClasses");
+    },
+    // 异步获取菜单
+    getMenuAuth() {
+      let getMenuPromise = new Promise((resolve, reject) => {
+        let menuJson = window.sessionStorage.getItem("menuAuth");
+        if (menuJson) {
+          this.routeMenus = JSON.parse(menuJson);
+        } else {
+          this.routeMenus = routeMenus;
+          window.sessionStorage.setItem(
+            "menuAuth",
+            JSON.stringify(this.routeMenus)
+          );
+          resolve(this.routeMenus);
+        }
+      });
     }
+  },
+  created() {
+    // 获取菜单
+    this.getMenuAuth()
   }
 };
 </script><style lang='less' scoped>
