@@ -35,10 +35,7 @@ export default {
   props: {},
   data() {
     return {
-      tagList: [
-        { title: "我的首页", path: ["/home/firstPage"] },
-        { title: "菜单一", path: ["/home/firstPage"] }
-      ],
+      tagList: [ ],
       // tabMouseEvent
       mouseRightKeyList: [
         {
@@ -139,6 +136,63 @@ export default {
   watch: {
     $route: function(to, from) {
       console.log(to, from, "$route");
+      if (to.name === "homePage" || to.name === "invalidpage") {
+        this.tagList = [];
+      } else {
+        this.currentTab = { title: to.meta.title, path: [to.fullPath] };
+        let titleArr = this.tagList.map(item => item.title);
+        let currRouteTitle = titleArr.includes(to.meta.title);
+        //判断是否是新tab
+        if (!currRouteTitle) {
+          // tag不存在
+          this.tagList.unshift({
+            title: to.meta.title,
+            path: [to.fullPath]
+          });
+        } else {
+          // 已存在
+          if (to.meta.index !== undefined) {
+            // 进入子页面,将子页面路径加入数组
+            this.tagList.forEach(item => {
+              if (item.title === to.meta.title) {
+                if (!item.path.includes(to.fullPath)) {
+                  item.path.push(to.fullPath);
+                } else {
+                  let ind = item.path.indexOf(to.fullPath);
+                  let path = item.path.slice(0, ind + 1);
+                  item.path = path;
+                }
+              }
+            });
+          } else {
+            // 进入主页面
+            // 进入主页面,删除下级页面缓存,清除下级路径
+            // 删除下级页面缓存
+            let index;
+            this.tagList.filter((item, ind) => {
+              if (item.path[0] === to.fullPath) {
+                index = ind;
+                return;
+              }
+            });
+            if (this.tagList[index].path.length > 1) {
+              this.tagList[index].path.map((item, ind) => {
+                // 默认最后一段为组件名！！！
+                if (ind !== 0) {
+                  // 从子页面回来更新数据 --->190215 因补货下架单
+                  let comp = item.split("/");
+                  comp = comp[comp.length - 1].split("?")[0];
+                  this.$store.commit("DEL_KEEPALIVE", { component: comp });
+                }
+              });
+              // 清除下级路径
+              this.tagList[index].path = [to.fullPath];
+            }
+          }
+        }
+      }
+      
+      window.sessionStorage.setItem("tagList", JSON.stringify(this.tagList))
     }
   }
 };
