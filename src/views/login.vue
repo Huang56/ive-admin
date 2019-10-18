@@ -1,6 +1,6 @@
 <template>
   <div class="admin_login_wrapper">
-    <div class="admin_login_form" @keyup.enter="myFakeLogin">
+    <div class="admin_login_form" @keyup.enter="login">
       <p>登录界面</p>
       <Form ref="formCustom" class="loginForm" :model="formCustom" :label-width="80">
         <FormItem label="UserName" prop="username">

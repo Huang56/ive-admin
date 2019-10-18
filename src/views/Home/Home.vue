@@ -1,25 +1,10 @@
 
 <template>
   <div class="layout">
-    <Layout :style="{minHeight: '100vh'}">
-      <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
-        <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
-          <MenuItem name="1-1">
-            <Icon type="ios-navigate"></Icon>
-            <span>Option 1</span>
-          </MenuItem>
-          <MenuItem name="1-2">
-            <Icon type="search"></Icon>
-            <span>Option 2</span>
-          </MenuItem>
-          <MenuItem name="1-3">
-            <Icon type="settings"></Icon>
-            <span>Option 3</span>
-          </MenuItem>
-        </Menu>
-      </Sider>
+    <div :style="{minHeight: '100vh'}" class="ivu-layout ivu-layout-has-sider">
+      <sideBar /> 
       <Layout>
-        <Header >
+        <Header>
           <subtabs></subtabs>
           <div class="logout">
             <span
@@ -51,19 +36,23 @@
           </Card>
         </Content>
       </Layout>
-    </Layout>
+    </div>
   </div>
 </template>
 <script>
 import subtabs from "./../../components/subtabs";
+import sideBar from "./SideBar/SideBar";
+import menuList from "../../router/menu"; // siderMenu
+
 export default {
-  components:{
-    subtabs
+  components: {
+    subtabs,
+    sideBar,
   },
   data() {
     return {
       fullScreen: true,
-      isCollapsed: false
+
     };
   },
   computed: {
@@ -122,27 +111,49 @@ export default {
       this.$router.push({
         path: "/login"
       });
+    },
+    // menu-start
+    //search
+    menuSearchClear() {
+      console.log("menuSearchClear");
+    },
+    menuChange() {
+      console.log("menuChange");
+    },
+    onQueryChange() {
+      console.log("onQueryChange");
     }
   }
 };
 </script>
 
 <style scoped lang='less'>
+// loyout 
+.ivu-layout {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    background: #f5f7f9;
+}
+
+.ivu-layout.ivu-layout-has-sider {
+    flex-direction: row;
+}
 /*header style*/
 .ivu-layout-header {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 32px;
-    line-height: 32px;
-    padding: 0 16px 0 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 16px 0 0;
 }
 .logoImg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    height: 108px;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  height: 108px;
+  cursor: pointer;
 }
 
 .logout img {
@@ -252,7 +263,7 @@ export default {
       width: 112px;
       display: none;
       z-index: 999;
-      background-color: #515A6E;
+      background-color: #515a6e;
       border-radius: 4px;
       height: 24px;
       line-height: 24px;
@@ -266,30 +277,5 @@ export default {
 .layout-con {
   height: 100%;
   width: 100%;
-}
-.menu-item span {
-  display: inline-block;
-  overflow: hidden;
-  width: 69px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: bottom;
-  transition: width 0.2s ease 0.2s;
-}
-.menu-item i {
-  transform: translateX(0px);
-  transition: font-size 0.2s ease, transform 0.2s ease;
-  vertical-align: middle;
-  font-size: 16px;
-}
-.collapsed-menu span {
-  width: 0px;
-  transition: width 0.2s ease;
-}
-.collapsed-menu i {
-  transform: translateX(5px);
-  transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
-  vertical-align: middle;
-  font-size: 22px;
 }
 </style>

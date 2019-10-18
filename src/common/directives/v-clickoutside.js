@@ -30,6 +30,7 @@ let startClick;
     nodeList.forEach(node => node[ctx].documentHandler(e, startClick));
   });
 
+// 创建dom
 function createDocumentHandler(el, binding, vnode) {
   return function (mouseup = {}, mousedown = {}) {
     if (
