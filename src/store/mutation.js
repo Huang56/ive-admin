@@ -6,4 +6,10 @@ export default {
             state.keepAliveComponents.push(payload.component)
         }
     },
+    [TYPES.DEL_KEEPALIVE](state, payload) {
+        let index = state.keepAliveComponents.indexOf(payload.component)
+        if (index >= 0) {
+            state.keepAliveComponents.splice(index, 1)
+        }
+    },
 }

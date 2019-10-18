@@ -5,6 +5,7 @@ let menu = {
   menuIcon: "icon-basic-data",
   children: [
     {
+      id:'basic-wareh',
       menuTitle: "仓库信息",
       menuPath: "",
       children: [
@@ -26,6 +27,7 @@ let menu = {
       ]
     },
     {
+      id:'basic-wareline',
       menuTitle: "线体管理",
       menuPath: "",
       children: [
@@ -47,6 +49,7 @@ let menu = {
       ]
     },
     {
+      id:'basic-warepakage',
       menuTitle: "包材管理",
       menuPath: "",
       children: [
