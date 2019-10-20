@@ -1,5 +1,5 @@
 let menu = {
-  id: "/systemSeting",
+  id: "1",
   menuIcon: "icon-systemSeting",
   menuTitle: "任务管理",
   children: [

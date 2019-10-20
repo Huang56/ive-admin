@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>edit moveWown</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M192,384 C85.961328,384 0,298.038672 0,192 C0,85.961328 85.961328,0 192,0 C298.038672,0 384,85.961328 384,192 C384,298.038672 298.038672,384 192,384 Z M184,254.686292 L129,199.686292 C125.875806,196.562097 120.810486,196.562097 117.686292,199.686292 C114.562097,202.810486 114.562097,207.875806 117.686292,211 L185.568542,278.882251 C187.269118,280.582826 189.544828,281.357737 191.769553,281.206983 C193.994277,281.357737 196.269987,280.582826 197.970563,278.882251 L265.852814,211 C268.977008,207.875806 268.977008,202.810486 265.852814,199.686292 C262.728619,196.562097 257.6633,196.562097 254.539105,199.686292 L200,254.225397 L200,112 C200,107.581722 196.418278,104 192,104 C187.581722,104 184,107.581722 184,112 L184,254.686292 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="edit-下移">
+            <g id="icon/table/edit-moveWown">
+                <g id="icon/table/edit-moveUp">
+                    <g id="icon/table/edit-list" transform="translate(64.000000, 64.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="合并形状" fill="#3FCEBF" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

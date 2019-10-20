@@ -1,0 +1,48 @@
+
+:tHeader="theader"  //表头必传
+:tableData="tableData"  //表格数据  由请求返回
+:itemButtons="itemButtons"  //小图标 需要就传
+handleWidth="100"  //操作栏的宽度，默认120px
+height="200"  //表格固定高度  不传默认随窗口适配
+@action='xxxxxxxxxxxx'  //自定义事件
+
+事件： 单击行，双击行，单击表头排序（后台排序）操作的单击
+
+
+
+
+data(){
+    return{
+
+        tHeader:[ //表头
+            {type:"selection",fixed:"left",width:"50"}, //复选框
+            {type:"index",label:"序号",fixed:"left",width:"50"}, //序号
+            {label:"始发区号",prop:"sendFrom"},
+            {label:"区间说明",prop:"intervalDesc",sortable: "custom"}, //sortable为custom表示排序列
+
+        ],
+
+        itemButtons:[ // 小图标
+          {
+            icon: 'el-icon-view', //图标
+            action: 'detail', //事件行为
+            bgcolor:'#1890FF' //图标背景颜色
+          },
+          {
+            icon: 'el-icon-edit',
+            action: 'edit',
+            bgcolor:'#FAAD14'
+          }
+        ],
+
+        tableData：[]  //由请求得到
+    }
+},
+methods:{  //action说明(排序事件action为sort)
+  xxxxxxxxxxxx(itemData){  //为table返回事件数据及类型 itemData是对象，通过itemData.action的值判断具体要做的事情
+      console.log(itemData)  //  {item: {…}, action: "detail"}
+      if(itemData.action=='detail'){
+        ...//跳转到详情页面
+      }
+  }
+}

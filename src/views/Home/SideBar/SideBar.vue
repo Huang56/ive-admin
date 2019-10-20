@@ -1,5 +1,5 @@
 <template>
-  <Sider collapsible :collapsed-width="64" v-model="isCollapsed">
+  <Sider ref="sider" collapsible :collapsed-width="64" v-model="isCollapsed">
     <div class="searchMenu">
       <span
         class="icon-search searchIcon"
@@ -29,7 +29,16 @@
     </div>
     <!-- width-menu -->
     <template v-if="!isCollapsed">
-      <Menu :active-name="activeName" theme="dark" width="auto" :class="menuitemClasses">
+      <Menu
+        ref="ivuMenu"
+        id="ivu-menu"
+        :active-name="activeName"
+        theme="dark"
+        width="auto"
+        accordion
+        :class="menuitemClasses"
+        :open-names="openNames"
+      >
         <template>
           <MenuItem name="myIndex" class="myIndex" :to="{ name: 'firstPage' }">
             <i style="margin-right: 16px" class="ivu-icon icon-index"></i>
@@ -202,16 +211,14 @@
 </style>
 <script>
 // mock数据
-import {menu as basicInfoMenu} from '../../../components/basicInfo/routemenu'
-import {menu as TaskManageMenu} from '../../../components/TaskManage/routemenu'
-import {menu as OutStorageManageMenu} from '../../../components/OutStorageManage/routemenu'
-let routeMenus = [
-  TaskManageMenu,
-  basicInfoMenu,
-  OutStorageManageMenu
-];
+import { menu as basicInfoMenu } from "../../../components/basicInfo/routemenu";
+import { menu as TaskManageMenu } from "../../../components/TaskManage/routemenu";
+import { menu as OutStorageManageMenu } from "../../../components/OutStorageManage/routemenu";
+let routeMenus = [TaskManageMenu, basicInfoMenu, OutStorageManageMenu];
 
 import draggable from "vuedraggable";
+// import menuList from "../../../router/menu.js"
+
 export default {
   name: "sideBar",
   components: {
@@ -220,17 +227,21 @@ export default {
   props: {},
   data() {
     return {
+      searchIconNode: null, //搜索
+      inputNode: null,
       isCollapsed: false,
       menuList: [], // siderMenu-start
       isShow: true, //搜索框
       menuSelect: "",
       hiddenSearchIcon: false,
       onQueryChangeValue: "",
-      activeIndex: "",
+      activeIndex: null,
       activeName: "", //默认高亮菜单
+      openNames: [], //默认展开菜单
       routeMenus: [], //当前用户的菜单
       myFavourite: [],
       // 侧边menu
+      narrowMenu_show: {},
       narrowMenu_side_show: true,
       narrowMenu_side_top: 0,
       narrowMenu_side_height: 0,
@@ -258,7 +269,7 @@ export default {
     // narrowMenu
     narrowMenuClick(str, item, index, evt) {
       console.log("narrowMenuClick");
-      console.log(str, item, index, evt);
+      console.log(str, item, index, evt, "narrowMenuClick");
       if (str === 1) {
         if (!item) return;
         this.narrowMenu_side_list = item.children || item;
@@ -326,11 +337,176 @@ export default {
           resolve(this.routeMenus);
         }
       });
+    },
+    // 激活菜单
+    openMenuFn(route) {
+      console.log("openMenuFn");
+      let openNames = "";
+      let activeName = "";
+      if (this.isCollapsed) return;
+
+      // 异常路由
+      if (route.name === "homePage") {
+        activeName = "";
+        openNames = [];
+        this.activeName = activeName;
+        this.openNames = openNames;
+        this.$nextTick(() => {
+          this.$refs.ivuMenu && this.$refs.ivuMenu.updateOpened();
+          this.$refs.ivuMenu && this.$refs.ivuMenu.updateActiveName();
+        });
+        return;
+      }
+      // 首页路由
+      if (route.name === "firstPage") {
+        activeName = "myIndex";
+        openNames = [];
+        this.activeName = activeName;
+        this.openNames = openNames;
+        this.$nextTick(() => {
+          // this.$refs.ivuMenu && this.$refs.ivuMenu.updateOpened();
+          // this.$refs.ivuMenu && this.$refs.ivuMenu.updateActiveName();
+        });
+        return;
+      }
+
+      let tagList = JSON.parse(sessionStorage.getItem("tagList"));
+      if (!tagList) return;
+
+      // 不在菜单里的路由   详情  新增 等, 故直接取最上级title
+      let curModule = tagList.filter(item => {
+        return item.title === route.meta.title;
+      });
+      // 新打开标签有问题  ---  思路  index: false（带false的都不是菜单页）
+      if (curModule.length === 0 && route.meta.keepAlive === false) {
+        return;
+      } else {
+        let _name = curModule[0]
+          ? curModule[0].path[0].substring(6)
+          : route.name;
+        let realName = route.name === _name ? route.name : _name;
+        console.log(this.routeMenus, "this.routeMenus");
+        this.routeMenus.forEach(item => {
+          item.children.forEach(_item => {
+            if (_item.menuPath === realName) {
+              activeName = _item.id;
+              openNames = [item.id];
+            }
+            if (activeName === "" && _item.children) {
+              _item.children.forEach(__item => {
+                if (__item.menuPath === realName) {
+                  activeName = __item.id;
+                  openNames = [item.id, _item.id];
+                }
+              });
+            }
+          });
+        });
+      }
+
+      this.activeName = activeName;
+      this.openNames = openNames;
+      this.$nextTick(() => {
+        this.$refs.ivuMenu.updateOpened();
+        this.$refs.ivuMenu.updateActiveName();
+      });
+    },
+    // menu Ul的高度
+    computeMenuheight(vm) {
+      let that = this || vm;
+      // console.log('computeMenuheight1', that.$refs);
+      console.log(
+        "computeMenuheight",
+        that.$refs.sider.$el.querySelector(".ivu-menu-vertical")
+      );
+      let docEle = document.documentElement;
+      let docEleHeight = document.documentElement.clientHeight;
+      let searchHeihgt = docEle.querySelector(".searchMenu").clientHeight;
+      let triggerHeihgt = docEle.querySelector(".ivu-layout-sider-trigger")
+        .clientHeight;
+      this.$nextTick(() => {
+        let ulMenuEle = that.$refs.sider.$el.querySelector(
+          ".ivu-menu-vertical"
+        );
+        let computeHeight = docEleHeight - triggerHeihgt - searchHeihgt;
+        ulMenuEle.style.height = computeHeight + "px";
+        console.log("docHeight", computeHeight);
+      });
+    }
+  },
+  watch: {
+    isCollapsed() {
+      for (let key in this.narrowMenu_show) {
+        this.narrowMenu_show[key] = false;
+      }
+      this.narrowMenu_side_show = false;
+      this.activeIndex = null;
+      if (!this.isCollapsed) {
+        this.computeMenuheight(this);
+        this.openMenuFn(this.$route);
+        if (!this.menuSelect) {
+          this.inputNode.style.textAlign = "center";
+          this.searchIconNode.style.left = "50%";
+          this.searchIconNode.style.marginLeft = "-40px";
+        } else {
+          this.inputNode.style.textAlign = "left";
+          this.searchIconNode.style.left = "5px";
+          this.searchIconNode.style.marginLeft = "0";
+        }
+      } else {
+        this.inputNode.style.textAlign = "left";
+        this.searchIconNode.style.left = "5px";
+        this.searchIconNode.style.marginLeft = "0";
+      }
+    },
+
+    // 监听路由，激活menu菜单
+    $route: function(to, from) {
+      this.openMenuFn(to);
     }
   },
   created() {
     // 获取菜单
     this.getMenuAuth();
+  },
+  mounted() {
+    this.computeMenuheight();
+    this.openMenuFn(this.$route);
+
+    try {
+      // console.log(this.searchIconNode, "this.searchIconNode");
+      let dom = this.$refs.content.$el.children[0];
+      let scrollTop = 0;
+      document.addEventListener(
+        "scroll",
+        e => {
+          this.scrollTaget = e.target;
+          if (this.scrollTaget.className.indexOf("ivu-layout-content") === -1) {
+            return;
+          }
+          //  console.dir(this.scrollTaget)
+          scrollTop = this.scrollTaget.scrollTop;
+          if (scrollTop > window.innerHeight) {
+            if (this.$store.state.scrollTopBtn) {
+              this.upButtonShow = true;
+            }
+          } else {
+            this.upButtonShow = false;
+          }
+        },
+        true
+      );
+      this.inputNode = this.$refs.menuSelect.$el.querySelector(
+        ".ivu-select-input"
+      );
+      this.searchIconNode = this.$refs.searchIcon;
+      console.log(this.searchIconNode, "this.searchIconNode");
+      if (!this.inputNode) {
+        return;
+      }
+      // this.inputNode.onfocus = this.onfocus;
+      // this.inputNode.onblur = this.onblur;
+    } catch (error) {}
   }
 };
 </script><style lang='less' scoped>
@@ -359,6 +535,14 @@ export default {
   vertical-align: middle;
   font-size: 22px;
 }
+.searchMenu {
+  margin: 0 10px;
+}
+// menuUl
+.ivu-menu-vertical {
+  overflow: auto;
+}
+
 // narrow-menu-start
 .narrowMenu {
   width: 64px;

@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import iView from 'iview'
-import 'iview/dist/styles/iview.css';
+import 'iview/dist/styles/iview.css'; 
 import App from './App.vue'
 import store from './store/index' // vuex
 import router from './router/index'
 //全局样式
+import './assets/css/reset.css' 
 import './assets/css/global.css' 
+
 import './assets/customTheme/theme.less'
 import './assets/font/style.css'//图标字体
 

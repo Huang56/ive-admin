@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/operation/sequence-UP</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,12 L6,9 L0,12 L6,0 L12,12 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="7_图标总览" transform="translate(-1773.000000, -274.000000)">
+            <g id="排序图标" transform="translate(1773.000000, 274.000000)">
+                <g id="icon/operation/首页">
+                    <g id="分组" transform="translate(6.000000, 6.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#0EC1AF" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
