@@ -13,6 +13,7 @@ export default {
 <style>
 #app {
   height: 100%;
+  background: yellow;
 }
 
 @media (min-width: 768px) {

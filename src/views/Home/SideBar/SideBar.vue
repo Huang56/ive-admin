@@ -217,7 +217,7 @@ import { menu as OutStorageManageMenu } from "../../../components/OutStorageMana
 let routeMenus = [TaskManageMenu, basicInfoMenu, OutStorageManageMenu];
 
 import draggable from "vuedraggable";
-// import menuList from "../../../router/menu.js"
+import menuList from "../../../router/menu.js";
 
 export default {
   name: "sideBar",
@@ -229,11 +229,11 @@ export default {
     return {
       searchIconNode: null, //搜索
       inputNode: null,
-      isCollapsed: false,
-      menuList: [], // siderMenu-start
+      menuList: [], // menu查询清单
       isShow: true, //搜索框
+      isCollapsed: false, //切换menu状态
       menuSelect: "",
-      hiddenSearchIcon: false,
+      hiddenSearchIcon: true,
       onQueryChangeValue: "",
       activeIndex: null,
       activeName: "", //默认高亮菜单
@@ -251,17 +251,54 @@ export default {
     };
   },
   methods: {
+    onblur(){
+      console.log('onblur');
+      this.inputNode.style.border = "none"
+			this.inputNode.style.background = "rgba(255,255,255,0.16)"
+			this.inputNode.style.paddingLeft = "20px";
+			this.hiddenSearchIcon = false;
+			if ( !this.isCollapsed ) {
+				if ( !this.menuSelect || str ) {
+					this.inputNode.style.textAlign = "center";
+					this.searchIconNode.style.left = "50%";
+					this.searchIconNode.style.marginLeft = "-40px";
+				}
+			}
+    },
+    onfocus(){
+      console.log('onfocus');
+      this.hiddenSearchIcon = true;
+			this.inputNode.style.textAlign = "left";
+			if(this.isCollapsed){
+				this.inputNode.style.paddingLeft = "3px";
+			}
+			this.searchIconNode.style.left = "5px";
+			this.searchIconNode.style.marginLeft = "0";
+			this.inputNode.style.background = "transparent"
+			this.inputNode.style.border = "1px solid #0EC1AF"
+    },
     handleClose() {
       console.log("handleClose");
     },
     menuSearchClear() {
       console.log("menuSearchClear");
+      if ( !this.isCollapsed ) {
+				this.onblur( "clear" );
+			}
     },
-    menuChange() {
+    menuChange(value) {
       console.log("menuChange");
+      this.isShow = value ? false : true;
+			if ( !!value ) {
+				this.$router.push( {
+					name: this.menuSelect
+				} );
+			}
     },
-    onQueryChange() {
+    onQueryChange(value) {
       console.log("onQueryChange");
+      this.onQueryChangeValue = value;
+			this.isShow = value ? false : true;
     },
     menuitemClasses() {
       console.log("menuitemClasses");
@@ -324,7 +361,9 @@ export default {
     },
     // 异步获取菜单
     getMenuAuth() {
+      console.log('getMenuAuth');
       let getMenuPromise = new Promise((resolve, reject) => {
+        console.log('Promise,');
         let menuJson = window.sessionStorage.getItem("menuAuth");
         if (menuJson) {
           this.routeMenus = JSON.parse(menuJson);
@@ -334,8 +373,55 @@ export default {
             "menuAuth",
             JSON.stringify(this.routeMenus)
           );
+          console.log('resolve');
           resolve(this.routeMenus);
         }
+      });
+
+      getMenuPromise.then(res => {
+        console.log('getMenuPromise',res);
+        res.forEach(item => {
+          //判断是否有子菜单
+          console.log('判断是否有子菜单',item.children.length>0);
+          if (item.children.length > 0) {
+             console.log('判断是否有子菜单',item.children);
+            item.children.map(item01 => {
+              //判断是否有孙子菜单
+              console.log('判断是否有孙子菜单',item01.children);
+              if (item01.children && item01.children.length > 0) {
+                item01.children.map(item02 => {
+                  //三级菜单
+                  item01.children.map(item02 => {
+                    item02.menuPath = item02.menuPath;
+                  });
+                  this.menuList.push({
+                    menuPath: item02.menuPath,
+                    menuTitle:
+                      item.menuTitle +
+                      ">" +
+                      item01.menuTitle +
+                      ">" +
+                      item02.menuTitle
+                  });
+                });
+              } else {
+                this.menuList.push({
+                  //二级
+                  menuPath: item01.menuPath,
+                  menuTitle: item.menuTitle + ">" + item01.menuTitle
+                });
+              }
+            });
+          } else {
+            //只有一级
+            this.menuList.push({
+              menuPath: item.menuPath,
+              menuTitle: item.menuTitle
+            });
+          }
+        });
+        console.log(this.menuList,'this.menuList');
+        this.tempMenuList = [...this.menuList];
       });
     },
     // 激活菜单
@@ -504,8 +590,8 @@ export default {
       if (!this.inputNode) {
         return;
       }
-      // this.inputNode.onfocus = this.onfocus;
-      // this.inputNode.onblur = this.onblur;
+      this.inputNode.onfocus = this.onfocus;
+      this.inputNode.onblur = this.onblur;
     } catch (error) {}
   }
 };
@@ -538,10 +624,17 @@ export default {
 .searchMenu {
   margin: 0 10px;
 }
+
+.searchIcon {
+    left: 50%;
+    top: 5px;
+}
+
 // menuUl
 .ivu-menu-vertical {
   overflow: auto;
 }
+
 
 // narrow-menu-start
 .narrowMenu {

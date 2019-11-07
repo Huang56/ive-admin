@@ -52,11 +52,6 @@ export default {
             this.IndexDbAjax(params).then(item=>{
               if(item.code==this.resCode.successCode){
                 const dataList = flag ? item.data : item.data.records || item.data.list
-                // if(item.data.records){
-                //   dataList=item.data.records
-                // }else{
-                //   dataList=item.data.list
-                // }
                 this.setIndexDBValue(name,dataList,curr);  //存入预请求表格数据
               }
             },()=>{

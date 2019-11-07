@@ -63,10 +63,52 @@ function getSelectList(option) {
       }); */
   });
 };
+
+// 对应模块的权限
+function getFeature(route) {
+  let menuAuth = null;
+  let feature = []; // 对应模块的权限列表
+  if (sessionStorage.menuAuth) {
+    menuAuth = JSON.parse(sessionStorage.menuAuth);
+  } else {
+    menuAuth = [];
+  }
+
+  menuAuth.some(item => {
+    item.children &&
+      item.children.some(item1 => {
+        if (item1.menuPath === route.name) {
+          feature = item1.authPermission;
+          return true;
+        } else {
+          item1.children &&
+            item1.children.some(item2 => {
+              if (item2.menuPath === route.name) {
+                feature = item2.authPermission;
+                return true;
+              }
+            });
+        }
+      });
+  });
+
+  let result = {};
+  feature.forEach(item => {
+    result[item.url] = item.description + "   " + item.url;
+  });
+  return result;
+}
+
 // 安装函数
 export function install(Vue) {
   resizeFn(Vue);
   window.addEventListener("resize", resizeFn(Vue), false);
   // 全局下拉框请求
   Vue.prototype.$getSelectList = getSelectList
+
+  // 对应模块的权限
+  Vue.prototype.$getFeature = function() {
+    let result = getFeature(this.$route);
+    return result;
+  };
 }

@@ -68,7 +68,7 @@ let routes = [
 
 ]
 
-// 子路由
+// 增加子路由，判断是否直接路由组件Menu-Item
 let route = []
 routeConfig.forEach(item => {
     if (item.children) {
@@ -78,7 +78,7 @@ routeConfig.forEach(item => {
     }
 })
 
-routes[1].children.splice(1, 0, ...route); //放入主路由children
+routes[1].children.splice(1, 0, ...route); //放入home主路由children
 
 let router = new Router({
     routes: routes,

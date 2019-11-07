@@ -1,5 +1,3 @@
-
-
 const hotKeyList = {
   "S": 83,
   "O": 79,
@@ -71,7 +69,6 @@ export default {
   inserted(el, binding) {
     // console.log('inserted')
     if (hotKeyList[binding.arg]) {
-
 
       window.removeEventListener('keydown', e => bindEvent(e, el, binding.arg))
       window.addEventListener('keydown', e => bindEvent(e, el, binding.arg))
